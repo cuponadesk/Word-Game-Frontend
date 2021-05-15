@@ -13,7 +13,7 @@
             class="card-header bg-primary text-white text-center"
             v-show="badWord == ''"
           >
-            <h3>Accepted Words {{ guessedWords.length }}/{{ words.length }}</h3>
+            <h3>Accepted Words {{ guessedWords.length }} of {{ words.length }}</h3>
           </div>
           <div
             class="card-header bg-danger text-white text-center text-white"
@@ -21,7 +21,7 @@
           >
             <h3>{{ badWord }} isn't a valid word.</h3>
           </div>
-                    <div
+          <div
             class="card-header bg-danger text-white text-center text-white"
             v-show="badWord != '' && alreadyGuessed == true && badWord != '@'"
           >
@@ -58,7 +58,10 @@
           </div>
           <div class="hex even">
             <div class="left"></div>
-            <div class="middle pointer" v-on:click="addLetter(randomizedLetters[0])">
+            <div
+              class="middle pointer"
+              v-on:click="addLetter(randomizedLetters[0])"
+            >
               {{ randomizedLetters[0].toUpperCase() }}
             </div>
             <div class="right"></div>
@@ -134,18 +137,21 @@
       </div>
     </div>
 
-    <br />
-    <hr />
-    <br />
-    <div class="row">
-      <div class="text-center col-lg-6 offset-lg-3">
-        <h4>Footer</h4>
-        <p>
-          Copyright &copy; 2020 &middot; All Rights Reserved &middot;
-          <a href="#">My Website</a>
-        </p>
+    <div class="row mt-4">
+      <div class="col">
+        <div class="card">
+          <div class="card-header bg-light text-dark text-center">
+            <h5>Rules</h5>
+          </div>
+          <div class="card-body text-center">
+            Build words using the letters. All valid words require using the
+            center letter. Letters may be used more than once.
+          </div>
+        </div>
       </div>
     </div>
+    <hr />
+
   </div>
 </template>
 
@@ -171,7 +177,6 @@ export default {
       this.letters = this.$store.state.letters;
       this.required = this.$store.state.required;
     } else {
-
       wordService
         .getRandom()
         .then((response) => {
@@ -186,7 +191,6 @@ export default {
         })
         .catch((error) => {
           alert("Error:", error);
-
         });
     }
   },
@@ -218,7 +222,6 @@ export default {
       this.builder = this.builder.toUpperCase();
     },
     save() {
-
       if (
         this.words.filter((elem) => elem == this.builder.toLowerCase())
           .length != 0 &&
@@ -228,7 +231,6 @@ export default {
         this.guessedWords.push(this.builder.toLowerCase());
         this.badWord = "@";
       } else if (
-        
         this.guessedWords.filter((elem) => elem == this.builder.toLowerCase())
           .length != 0
       ) {
@@ -240,7 +242,6 @@ export default {
       this.erase();
     },
     erase() {
-      
       this.builder = "";
     },
   },
