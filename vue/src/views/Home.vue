@@ -171,7 +171,7 @@ export default {
       this.letters = this.$store.state.letters;
       this.required = this.$store.state.required;
     } else {
-      console.log("here");
+
       wordService
         .getRandom()
         .then((response) => {
@@ -185,7 +185,7 @@ export default {
           this.$store.commit("REMEMBER_REQUIRED", this.required);
         })
         .catch((error) => {
-          console.log(error);
+
         });
     }
   },
@@ -217,7 +217,7 @@ export default {
       this.builder = this.builder.toUpperCase();
     },
     save() {
-      console.log(this.builder.toLowerCase());
+
       if (
         this.words.filter((elem) => elem == this.builder.toLowerCase())
           .length != 0 &&
@@ -231,7 +231,6 @@ export default {
         this.guessedWords.filter((elem) => elem == this.builder.toLowerCase())
           .length != 0
       ) {
-        console.log("guessed already");
         this.badWord = this.builder;
         this.alreadyGuessed = true;
       } else {

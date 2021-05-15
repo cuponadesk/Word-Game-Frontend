@@ -45,17 +45,17 @@ export default new Vuex.Store({
       axios.defaults.headers.common = {};
     },
     REMEMBER_WORDS(state, words) {
-      console.log(words);
+
       state.words = words;
       localStorage.setItem('words', words);
     },
     REMEMBER_LETTERS(state, letters) {
-      console.log(letters);
+
       state.letters = letters;
       localStorage.setItem('letters', letters);
     },
     REMEMBER_REQUIRED(state, required) {
-      console.log(required);
+
       state.required = required;
       localStorage.setItem('required', required);
     }
