@@ -185,6 +185,7 @@ export default {
           this.$store.commit("REMEMBER_REQUIRED", this.required);
         })
         .catch((error) => {
+          alert("Error:", error);
 
         });
     }
