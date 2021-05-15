@@ -7,7 +7,7 @@
             class="card-header bg-success text-white text-center"
             v-show="badWord == '@'"
           >
-            <h3>Accepted Words {{ guessedWords.length }}/{{ words.length }}</h3>
+            <h3>Accepted</h3>
           </div>
           <div
             class="card-header bg-primary text-white text-center"
@@ -131,19 +131,6 @@
           Shuffle Letters
         </button>
         <div class="btn btn-primary ml-2" v-on:click="erase()">Erase</div>
-      </div>
-    </div>
-
-    <br />
-    <hr />
-    <br />
-    <div class="row">
-      <div class="text-center col-lg-6 offset-lg-3">
-        <h4>Footer</h4>
-        <p>
-          Copyright &copy; 2020 &middot; All Rights Reserved &middot;
-          <a href="#">My Website</a>
-        </p>
       </div>
     </div>
   </div>
