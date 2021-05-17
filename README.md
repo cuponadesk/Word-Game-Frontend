@@ -3,7 +3,7 @@
 
 This is the Vue-based browser game, connected to a Java Spring Boot backend API utilizing a MongoDB database. 
 
-![Game image](https://github.com/cuponadesk/Word-Game-Frontend/blob/main/game.jpg?raw=true)
+![Game image](https://github.com/cuponadesk/Word-Game-Frontend/blob/main/images/readme.jpg?raw=true)
 
 
 ## How to play
