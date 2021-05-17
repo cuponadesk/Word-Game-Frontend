@@ -11,9 +11,9 @@ Click on the hexagons to add a letter to the word builder. When you think you ha
 
 ## Scoring
 
-Four letters  - 1 point
-Five Letters  - 3 points
-Six Letters   - 7 points
-Seven Letters - 15 points
-Eight Letters - 31 points
-Nine+ Letters - 63 points
+Four letters  - 1 point  
+Five Letters  - 3 points  
+Six Letters   - 7 points  
+Seven Letters - 15 points  
+Eight Letters - 31 points  
+Nine+ Letters - 63 points  
