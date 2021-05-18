@@ -45,7 +45,7 @@
     </div>
 
     <div class="row pt-2 mb-n2">
-      <div class="col-12 text-capitalize text-center">
+      <div class="col text-capitalize text-center">
         <h1>
           <span style="color: white">A</span>{{ builder
           }}<span style="color: white">A</span>
