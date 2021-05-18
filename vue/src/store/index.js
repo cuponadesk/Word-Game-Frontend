@@ -26,6 +26,7 @@ export default new Vuex.Store({
     words: [] || storedWords,
     letters: storedLetters || [],
     required: storedRequired || "",
+    highscore: 0
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {

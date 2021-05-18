@@ -147,9 +147,9 @@
             <h5>Rules</h5>
           </div>
           <div class="card-body text-center">
-            Build words using the letters. Words must be atleast four letters
-            long. All valid words require using the center letter. Letters may
-            be used more than once. Generally, plurals aren't considered valid.
+            Build words by clicking on the letters. Words must be four letters or
+            longer. All valid words require using the center letter. Letters may
+            be used more than once. Plural forms aren't valid.
           </div>
         </div>
       </div>
@@ -184,33 +184,40 @@ export default {
       badWord: "",
       alreadyGuessed: false,
       score: 0,
+      highscore: 0,
     };
   },
   mounted() {
-    if (this.$store.state.words.length != 0) {
-      this.words = this.$store.state.words;
-      this.letters = this.$store.state.letters;
-      this.required = this.$store.state.required;
-    } else {
-      wordService
-        .getRandom()
-        .then((response) => {
-          this.words = response.data.words;
-          this.letters = response.data.letters;
-          this.required = response.data.required;
-          this.shuffle();
-
-          this.$store.commit("REMEMBER_WORDS", this.words);
-          this.$store.commit("REMEMBER_LETTERS", this.letters);
-          this.$store.commit("REMEMBER_REQUIRED", this.required);
-        })
-        .catch((error) => {
-          alert("Error:", error);
-        });
-      this.score = 0;
-    }
+    this.getWords();
   },
   methods: {
+    getWords() {
+      if (this.$store.state.words.length != 0) {
+        this.words = this.$store.state.words;
+        this.letters = this.$store.state.letters;
+        this.required = this.$store.state.required;
+        this.highscore = this.$store.state.highscore;
+      } else {
+        wordService
+          .getRandom()
+          .then((response) => {
+            this.words = response.data.words;
+            this.letters = response.data.letters;
+            this.required = response.data.required;
+            this.highscore = response.data.highscore;
+            this.shuffle();
+
+            this.$store.commit("REMEMBER_WORDS", this.words);
+            this.$store.commit("REMEMBER_LETTERS", this.letters);
+            this.$store.commit("REMEMBER_REQUIRED", this.required);
+          })
+          .catch((error) => {
+            alert("Error:", error);
+          });
+        this.score = 0;
+      }
+    },
+
     shuffle() {
       let array = this.letters.filter((elem) => elem != this.required);
       var currentIndex = array.length,
@@ -280,7 +287,12 @@ export default {
           case 4:
             this.score += 1;
             this.badWord = "+1";
-            break;
+            break;   
+        }
+        if(this.score > this.highscore) {
+          let s = { required : this.required, letters: this.letters, highscore: this.highscore }
+          wordService.updateHighScore(s);
+
         }
       } else if (
         this.guessedWords.filter((elem) => elem == this.builder.toLowerCase())
