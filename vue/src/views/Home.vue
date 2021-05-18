@@ -17,13 +17,17 @@
           </div>
           <div
             class="card-header bg-danger text-white text-center text-white"
-            v-show="badWord != '' && alreadyGuessed == false && badWord[0] != '+'"
+            v-show="
+              badWord != '' && alreadyGuessed == false && badWord[0] != '+'
+            "
           >
             <h3>{{ badWord }} isn't a valid word.</h3>
           </div>
           <div
             class="card-header bg-danger text-white text-center text-white"
-            v-show="badWord != '' && alreadyGuessed == true && badWord[0] != '+'"
+            v-show="
+              badWord != '' && alreadyGuessed == true && badWord[0] != '+'
+            "
           >
             <h3>{{ badWord }} was already added</h3>
           </div>
@@ -33,6 +37,7 @@
               ><span v-for="word in guessedWords" v-bind:key="word"
                 >&nbsp;{{ word.toUpperCase() }}&nbsp;</span
               >
+              <span style="color: white">A</span>
             </h4>
           </div>
         </div>
@@ -47,9 +52,8 @@
         </h1>
       </div>
     </div>
-    <div class="row mt-n5">
-      <div class="col"></div>
-      <div class="col-auto mr-4 mb-md-0 mb-5 pb-5">
+    <div class="row mt-n4 justify-content-center">
+      <div class="col-auto mr-4 mb-md-0 mb-5 pb-5 mt-n4">
         <div class="hex-row">
           <div class="hex">
             <div class="left-clear"></div>
@@ -119,10 +123,9 @@
           </div>
         </div>
       </div>
-      <div class="col"></div>
     </div>
 
-    <div class="row pt-5">
+    <div class="row pt-2 pt-sm-5">
       <div class="col-12 text-center">
         <button
           style="z-index: 1000;"
@@ -144,18 +147,21 @@
             <h5>Rules</h5>
           </div>
           <div class="card-body text-center">
-            Build words using the letters. Words must be atleast four letters long. All valid words require using the
-            center letter. Letters may be used more than once. Generally, plurals aren't considered valid. 
+            Build words using the letters. Words must be atleast four letters
+            long. All valid words require using the center letter. Letters may
+            be used more than once. Generally, plurals aren't considered valid.
           </div>
         </div>
       </div>
-       <div class="col-12 col-sm-6">
+      <div class="col-12 col-sm-6">
         <div class="card">
           <div class="card-header bg-light text-dark text-center">
             <h5>Scoring</h5>
           </div>
           <div class="card-body text-center">
-            Words with four letters are worth 1 point, five letters – 3 points, six letters – 7 points, seven letters – 16 points, eight letters – 31 points, 9 letters or more – 63 points. 
+            Words with four letters are worth 1 point, five letters – 3 points,
+            six letters – 7 points, seven letters – 16 points, eight letters –
+            31 points, 9 letters or more – 63 points.
           </div>
         </div>
       </div>
@@ -177,7 +183,7 @@ export default {
       builder: "",
       badWord: "",
       alreadyGuessed: false,
-      score : 0
+      score: 0,
     };
   },
   mounted() {
@@ -201,7 +207,7 @@ export default {
         .catch((error) => {
           alert("Error:", error);
         });
-        this.score = 0;
+      this.score = 0;
     }
   },
   methods: {
@@ -237,11 +243,11 @@ export default {
           .length != 0 &&
         this.guessedWords.filter((elem) => elem == this.builder.toLowerCase())
           .length == 0 &&
-          this.builder.length > 3
+        this.builder.length > 3
       ) {
         this.guessedWords.push(this.builder.toLowerCase());
-        
-        switch(this.builder.length) {
+
+        switch (this.builder.length) {
           // default: this.score += 55;
           // this.badWord = "+55";
           //                   break;
@@ -251,24 +257,30 @@ export default {
           // case 10: this.score += 21;
           //           this.badWord = "+21";
           //                   break;
-          default: this.score += 63;
-                    this.badWord = "+63";
-                            break;
-          case 8: this.score += 31;
-                    this.badWord = "+31";
-                            break;
-          case 7: this.score += 15;
-                    this.badWord = "+15";
-                            break;
-          case 6: this.score += 7;
-                    this.badWord = "+7";
-                            break;
-          case 5: this.score += 3;
-                    this.badWord = "+3";
-                            break;
-          case 4: this.score += 1;
-                    this.badWord = "+1";
-                  break;
+          default:
+            this.score += 63;
+            this.badWord = "+63";
+            break;
+          case 8:
+            this.score += 31;
+            this.badWord = "+31";
+            break;
+          case 7:
+            this.score += 15;
+            this.badWord = "+15";
+            break;
+          case 6:
+            this.score += 7;
+            this.badWord = "+7";
+            break;
+          case 5:
+            this.score += 3;
+            this.badWord = "+3";
+            break;
+          case 4:
+            this.score += 1;
+            this.badWord = "+1";
+            break;
         }
       } else if (
         this.guessedWords.filter((elem) => elem == this.builder.toLowerCase())
